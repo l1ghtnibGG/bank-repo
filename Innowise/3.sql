@@ -1,4 +1,4 @@
-SELECT Карточки.idКлиента, (Банки.[Баланс аккаунта] - SUM(Карточки.Баланс)) as Разница
-FROM Банки JOIN Карточки ON Банки.id = Карточки.idКлиента
-WHERE (Банки.[Баланс аккаунта] - Карточки.Баланс) != 0
-GROUP BY Карточки.idКлиента, Банки.[Баланс аккаунта]; 
+SELECT Cards.ClientId, (Banks.Balance - SUM(Cards.BalanceOfCard)) as Differents
+FROM Banks JOIN Cards ON Banks.Id = Cards.ClientId
+WHERE (Banks.Balance - Cards.BalanceOfCard) != 0
+GROUP BY Cards.ClientId, Banks.Balance; 

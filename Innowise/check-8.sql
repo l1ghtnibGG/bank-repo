@@ -1,3 +1,3 @@
-UPDATE Банки
-SET [Баланс аккаунта] = 10
-WHERE Id = 1;
+UPDATE Banks
+SET Balance = 10
+WHERE Id = 4;

@@ -1,2 +1,3 @@
-SELECT Банки.[Название банка], Банки.Город FROM Банки
-WHERE Банки.Город = 'Новополоцк';
+SELECT Banks.NameOfBank, Banks.City 
+FROM Banks
+WHERE Banks.City = 'Новополоцк';

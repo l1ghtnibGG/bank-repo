@@ -1,3 +1,4 @@
-SELECT Клиенты.Фамилия, Клиенты.Имя, SUM(Карточки.Баланс)
-FROM Клиенты JOIN Карточки ON Карточки.idКлиента = Клиенты.id
-GROUP BY Клиенты.Фамилия, Клиенты.Имя;
+SELECT Clients.LastName, Clients.FirstName, SUM(Cards.BalanceOfCard)
+FROM Clients JOIN Cards 
+ON Cards.ClientId = Clients.Id
+GROUP BY Clients.LastName, Clients.FirstName;

@@ -1,2 +1,2 @@
 EXEC Trans
-SELECT * FROM Карточки;
+SELECT * FROM Cards;

@@ -1,3 +1,4 @@
-SELECT Клиенты.[Соц статус], COUNT(*) AS Количество
-FROM Карточки JOIN Клиенты ON Карточки.idКлиента = Клиенты.id
-GROUP BY Клиенты.[Соц статус];
+SELECT Clients.Status, COUNT(*) AS Amount
+FROM Cards JOIN Clients 
+ON Cards.ClientId = Clients.Id
+GROUP BY Clients.Status;

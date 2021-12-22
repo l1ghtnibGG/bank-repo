@@ -1,3 +1,3 @@
-SELECT Клиенты.Фамилия, Клиенты.Имя, Клиенты.Отчество, Карточки.Баланс, Карточки.[Название банка]
-FROM Карточки JOIN Клиенты 
-ON Клиенты.id = Карточки.idКлиента;
+SELECT Clients.LastName, Clients.FirstName, Clients.Patronymic, Cards.BalanceOfCard, Cards.NameOfBank
+FROM Cards JOIN Clients 
+ON Clients.id = Cards.ClientId;
