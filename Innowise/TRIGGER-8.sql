@@ -1,8 +1,9 @@
-USE [Innowise]
+USE Bank
 GO
-ALTER TRIGGER [dbo].[verification] ON [dbo].[Banks]
-FOR INSERT, UPDATE
+CREATE TRIGGER verification ON Banks
+INSTEAD OF UPDATE
 AS 
+
 DECLARE @bal_kart INT
 DECLARE @bal_bank INT
 

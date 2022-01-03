@@ -1,3 +1,3 @@
 UPDATE Banks
 SET Balance = 10
-WHERE Id = 6;
+WHERE Id = 1;

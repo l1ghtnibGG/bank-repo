@@ -1,0 +1,37 @@
+USE Bank;
+
+CREATE TABLE Banks
+(
+	Id INT PRIMARY KEY,
+	NameOfBank NVARCHAR(30),
+	City NVARCHAR(30),
+	Balance MONEY
+);
+
+CREATE TABLE Clients
+(
+	Id INT PRIMARY KEY,
+	LastName NVARCHAR(30),
+	FirstName NVARCHAR(30),
+	Patronymic NVARCHAR(30),
+	SocialStatus NVARCHAR(30)
+);
+
+CREATE TABLE Cards 
+(
+	Id INT PRIMARY KEY,
+	NameOfBank NVARCHAR(30),
+	NameOfCard NVARCHAR(30),
+	BalanceOfCard MONEY,
+	ClientId INT,
+	FOREIGN KEY (ClientId) REFERENCES Clients (Id) ON DELETE SET DEFAULT
+);
+
+  CREATE TABLE Interim
+(
+	ClientId INT,
+	BankId INT,
+	FOREIGN KEY (ClientId) REFERENCES Clients (Id) ON DELETE SET DEFAULT,
+	FOREIGN KEY (BankId) REFERENCES Banks (Id) ON DELETE SET DEFAULT
+);
+
