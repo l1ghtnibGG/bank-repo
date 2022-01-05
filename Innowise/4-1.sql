@@ -1,4 +1,4 @@
-SELECT Clients.SocialStatus, COUNT(*) AS Amount
-FROM Cards 
-	JOIN Clients ON Cards.ClientId = Clients.Id
-GROUP BY Clients.SocialStatus;
+SELECT SocStatus.Stat, COUNT(*) AS Amount
+FROM SocStatus 
+	JOIN Clients ON SocStatus.Id = Clients.SocialStatId
+GROUP BY SocStatus.Stat;

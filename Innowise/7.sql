@@ -1,2 +1,2 @@
 EXEC Trans
-SELECT * FROM Cards;
+SELECT * FROM CardBalance;

@@ -1,5 +1,4 @@
-SELECT Cards.ClientId, (Banks.Balance - SUM(Cards.BalanceOfCard)) as Differents
-FROM Banks 
-	JOIN Cards ON Banks.Id = Cards.ClientId
-WHERE (Banks.Balance - Cards.BalanceOfCard) != 0
-GROUP BY Cards.ClientId, Banks.Balance; 
+SELECT (SUM(ClientsBank.Balance) - SUM(CardBalance.Balance)) AS Differents
+FROM CardBalance
+	JOIN ClientsBank ON CardBalance.ClientId = ClientsBank.ClientId
+WHERE (ClientsBank.Balance - CardBalance.Balance) != 0;
