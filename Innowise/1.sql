@@ -1,4 +1,8 @@
-SELECT Banks.BankName, Banks.City, COUNT(Banks.City) as Amount
+SELECT Banks.BanksName, CityName.City
 FROM Banks 
-WHERE Banks.City = N'Новополоцк'
-GROUP BY Banks.BankName, Banks.City;
+	JOIN
+		(SELECT Cities.City, CityBank.BankId
+		FROM Cities 
+		JOIN CityBank ON Cities.Id = CityBank.CityId) AS CityName
+	ON Banks.Id = CityName.BankId
+WHERE CityName.City = N'Минск';

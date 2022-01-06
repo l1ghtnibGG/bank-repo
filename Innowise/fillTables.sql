@@ -1,43 +1,57 @@
- INSERT INTO Banks(Id, BankName, City)
+ INSERT INTO Banks(BanksName)
  VALUES 
- (1, N'Беларусь', N'Минск'),
- (2, N'Приор', N'Новополоцк'),
- (3, N'Беларусь', N'Новополоцк'),
- (4, N'Белъинвест', N'Полоцк')
+ (N'Р‘РµР»Р°СЂСѓСЃСЊ'),
+ (N'РџСЂРёРѕСЂ'),
+ (N'Р‘РџРЎ'),
+ (N'Р‘РµР»СЉРёРЅРІРµСЃС‚')
 
- INSERT INTO Clients(Id, LastName, FirstName, Patronymic)
- VALUES 
- (1, N'Кругликов', N'Владислав', N'Александрович'),
- (2, N'Данелёнок', N'Виктория', N'Владимировна'),
- (3, N'Дедух', N'Пётр', N'Егорович'),
- (4, N'Белесова', N'Карина', N'Викторовна')
-
- INSERT INTO SocStatus(Id, Stat)
+ INSERT INTO Cities(City)
  VALUES
- (1, N'Трудоспособный'),
- (2, N'Безработный'),
- (3, N'Пенсионер')
+ (N'РњРёРЅСЃРє'),
+ (N'РќРѕРІРѕРїРѕР»РѕС†Рє'),
+ (N'РџРѕР»РѕС†Рє')
+
+
+ INSERT INTO CityBank(BankId, CityId)
+ VALUES
+ (1, 1),
+ (2, 2),
+ (3, 1),
+ (4, 3)
+
+ INSERT INTO Clients(LastName, FirstName, Patronymic, SocialStatId)
+ VALUES 
+ (N'РљСЂСѓРіР»РёРєРѕРІ', N'Р’Р»Р°РґРёСЃР»Р°РІ', N'РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡', 1),
+ (N'Р”Р°РЅРµР»С‘РЅРѕРє', N'Р’РёРєС‚РѕСЂРёСЏ', N'Р’Р»Р°РґРёРјРёСЂРѕРІРЅР°', 1),
+ (N'Р”РµРґСѓС…', N'РџС‘С‚СЂ', N'Р•РіРѕСЂРѕРІРёС‡', 3),
+ (N'Р‘РµР»РµСЃРѕРІР°', N'РљР°СЂРёРЅР°', N'Р’РёРєС‚РѕСЂРѕРІРЅР°', 2)
+
+ INSERT INTO SocStatus(Stat)
+ VALUES
+ (N'РўСЂСѓРґРѕСЃРїРѕСЃРѕР±РЅС‹Р№'),
+ (N'Р‘РµР·СЂР°Р±РѕС‚РЅС‹Р№'),
+ (N'РџРµРЅСЃРёРѕРЅРµСЂ')
  
 
- INSERT INTO ClientsBank(Id, ClientId, BankId, Balance)
+ INSERT INTO ClientsBank(ClientId, BankId, Balance)
  VALUES
- (1, 1, 1, 10000),
+ (1, 1, 10000),
+ (2, 2, 1400),
+ (3, 3, 500),
+ (4, 4, 900),
+ (3, 4, 300);
+
+
+ INSERT Cards(CardsName)
+ VALUES 
+ (N'РЎС‚Р°РЅРґР°СЂС‚'),
+ (N'РџР»СЋСЃ'),
+ (N'Р“РѕР»Рґ');
+
+ INSERT CardBalance(BankId, ClientId, CardId, Balance)
+ VALUES 
+ (1, 1, 1, 8000),
  (2, 2, 2, 1400),
- (3, 3, 3, 500),
- (4, 4, 4, 900),
- (5, 3, 4, 300);
-
-
- INSERT Cards(Id, CardsName)
- VALUES 
- (1, N'Стандарт'),
- (2, N'Плюс'),
- (3, N'Голд');
-
- INSERT CardBalance(Id, BankId, ClientId, CardId, Balance)
- VALUES 
- (1, 1, 1, 1, 8000),
- (2, 2, 2, 2, 1400),
- (3, 3, 3, 1, 500),
- (4, 4, 3, 3, 300),
- (5, 4, 4, 2, 900);	
+ (3, 3, 1, 500),
+ (4, 3, 3, 300),
+ (4, 4, 2, 900);	

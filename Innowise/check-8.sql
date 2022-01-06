@@ -1,3 +1,3 @@
-UPDATE Banks
-SET Balance = 10
+UPDATE ClientsBank
+SET Balance = 1000
 WHERE Id = 1;
