@@ -1,4 +1,4 @@
- INSERT INTO Banks(Id, NameOfBank, City)
+ INSERT INTO Banks(Id, BankName, City)
  VALUES 
  (1, N'Беларусь', N'Минск'),
  (2, N'Приор', N'Новополоцк'),
