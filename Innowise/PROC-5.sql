@@ -1,12 +1,15 @@
 alter PROCEDURE AddMoney 
+	@SOCID INT,
+	@SUM DECIMAL
+ 
 AS
 BEGIN
-
-DECLARE @SUM INT
-SET @SUM = 10;
-
-	SELECT Clients.LastName, Clients.FirstName, ClientsBank.Balance + @SUM   
+UPDATE ClientsBank
+ SET ClientsBank.Balance = ClientsBank.Balance + @SUM
+ FROM 
+	(SELECT Clients.SocialStatId, ClientsBank.Balance, Clients.Id  
 	FROM  Clients 
 		JOIN ClientsBank ON ClientsBank.ClientId = Clients.Id
-	WHERE Clients.SocialStatId = 1
+		WHERE Clients.SocialStatId = @SOCID) AS SELECTED
+	WHERE SELECTED.Id = ClientsBank.ID
 END;
