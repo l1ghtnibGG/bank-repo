@@ -1,8 +1,5 @@
-SELECT Banks.BanksName, CityName.City
-FROM Banks 
-	JOIN
-		(SELECT Cities.City, CityBank.BankId
-		FROM Cities 
-		JOIN CityBank ON Cities.Id = CityBank.CityId) AS CityName
-	ON Banks.Id = CityName.BankId
-WHERE CityName.City = N'Минск';
+select Banks.BanksName, Cities.City
+from Banks
+left join CityBank on Banks.Id = CityBank.BankId
+left join Cities on CityBank.CityId = Cities.Id
+where Cities.City = N'Минск';

@@ -1,13 +1,8 @@
-SELECT PERSON.LastName, PERSON.FirstName, BANK.BanksName, PERSON.Differents
-FROM 
-(SELECT Banks.BanksName, ClientsBank.ClientId
-		FROM Banks JOIN ClientsBank ON ClientsBank.BankId = Banks.Id) AS BANK 
+select clientBalance.LastName, clientBalance.FirstName, clientBalance.Patronymic, 
+Banks.BanksName, (SUM(clientBalance.Balance) - SUM(CardBalance.Balance)) as different
+  from (select Clients.LastName, Clients.FirstName, Clients.Patronymic, ClientsBank.Balance, Clients.Id
+	from Clients join ClientsBank on ClientsBank.ClientId = Clients.Id) as clientBalance
 
-		JOIN (SELECT Clients.FirstName, Clients.LastName, DIFF.Differents, Clients.Id FROM Clients 
-		JOIN (SELECT ClientsBank.ClientId, (SUM(ClientsBank.Balance) - SUM(CardBalance.Balance)) AS Differents
-		FROM CardBalance
-		JOIN ClientsBank ON CardBalance.ClientId = ClientsBank.ClientId and (ClientsBank.Balance - CardBalance.Balance) != 0
-		group by ClientsBank.ClientId) AS DIFF ON Clients.Id = DIFF.ClientId
-
-WHERE DIFF.Differents != 0) AS PERSON
-ON PERSON.Id = BANK.ClientId;
+  right join CardBalance on CardBalance.ClientId = clientBalance.id
+  right join Banks on Banks.id = CardBalance.BankId
+  group by clientBalance.LastName, clientBalance.FirstName, clientBalance.Patronymic, Banks.BanksName

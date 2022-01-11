@@ -1,4 +1,4 @@
-alter PROCEDURE AddMoney 
+CREATE PROCEDURE AddMoney 
 	@SOCID INT,
 	@SUM DECIMAL
  

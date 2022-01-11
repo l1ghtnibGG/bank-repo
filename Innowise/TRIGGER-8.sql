@@ -1,6 +1,6 @@
 USE Bank
 GO
-alter TRIGGER verification ON ClientsBank
+CREATE TRIGGER verification ON ClientsBank
 INSTEAD OF UPDATE
 AS 
 
