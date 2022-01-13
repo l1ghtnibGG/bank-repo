@@ -1,3 +1,5 @@
-SELECT SocStatus.Stat, Clients.FirstName
+SELECT 
+	Stat, (select COUNT(*) from Clients
+			where SocialStatId = SocStatus.Id) as Amount
 FROM SocStatus 
-	JOIN Clients ON SocStatus.Id = Clients.SocialStatId;
+	
