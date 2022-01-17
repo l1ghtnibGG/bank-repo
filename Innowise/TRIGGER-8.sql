@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
+create TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
 INSTEAD OF UPDATE
 AS 
 
