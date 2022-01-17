@@ -1,18 +1,29 @@
-USE Bank
+USE [Bank]
 GO
-CREATE TRIGGER verification ON ClientsBank
+/****** Object:  Trigger [dbo].[verification]    Script Date: 17.01.2022 08:02:02 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
 INSTEAD OF UPDATE
 AS 
 
+declare @identifier int 
 DECLARE @bal_kart INT
 DECLARE @bal_bank INT
 
+
+select @bal_bank = inserted.Balance, @identifier = inserted.ClientId
+			from inserted
+			join ClientsBank as cb
+			on inserted.ClientId = cb.ClientId
+
+
 	SELECT @bal_kart = CardBalance.Balance
 		FROM CardBalance 
+		where ClientId = @identifier
 
-
-	SELECT @bal_bank = ClientsBank.Balance
-		FROM ClientsBank
 
 
 IF @bal_bank < @bal_kart
