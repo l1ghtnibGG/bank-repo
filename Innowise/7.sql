@@ -1,2 +1,2 @@
-EXEC Trans 2, 10
+EXEC Trans 1, 10
 SELECT * FROM CardBalance;

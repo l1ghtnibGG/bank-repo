@@ -6,7 +6,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 create TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
-INSTEAD OF UPDATE
+after UPDATE
 AS 
 
 declare @identifier int 
@@ -20,16 +20,23 @@ select @bal_bank = inserted.Balance, @identifier = inserted.ClientId
 			on inserted.ClientId = cb.ClientId
 
 
-	SELECT @bal_kart = CardBalance.Balance
+	SELECT @bal_kart = sum(Balance)
 		FROM CardBalance 
 		where ClientId = @identifier
+		group by ClientId
 
 
 
 IF @bal_bank < @bal_kart
-BEGIN 
+begin
 ROLLBACK TRAN
 RAISERROR('Сумма на счёте не может быть меньше чем суммы на картах', 16, 1)
-END
+end
+
+else
+begin
+print'Перевод прошел успешно';
+end
+
 
 
