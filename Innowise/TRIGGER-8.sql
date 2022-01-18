@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
+alter TRIGGER [dbo].[verification] ON [dbo].[ClientsBank]
 after UPDATE
 AS 
 
@@ -30,12 +30,12 @@ select @bal_bank = inserted.Balance, @identifier = inserted.ClientId
 IF @bal_bank < @bal_kart
 begin
 ROLLBACK TRAN
-RAISERROR('Сумма на счёте не может быть меньше чем суммы на картах', 16, 1)
+RAISERROR('Sum on bank accaunt cant be less then sum on cards', 16, 1)
 end
 
 else
 begin
-print'Перевод прошел успешно';
+print'Transfer was successful';
 end
 
 
